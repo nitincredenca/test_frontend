@@ -1,0 +1,301 @@
+.outline-content h1 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.outline-content h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.outline-content strong {
+  font-weight: bold;
+}
+
+.outline-content ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.outline-content li {
+  margin-bottom: 0.25rem;
+}
+
+
+.markdown-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+.markdown-table th,
+.markdown-table td {
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.markdown-table th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+.tooltip-container {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip-container .tooltip {
+  visibility: hidden;
+  width: 260px;
+  background-color: #1f2937;
+  color: white;
+  text-align: left;
+  border-radius: 4px;
+  padding: 12px;
+  position: absolute;
+  z-index: 10000; /* Increased from 1000 to 10000 */
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.tooltip-container .left-tooltip {
+  left: 0;
+  transform: none;
+  margin-left: -10px;
+  z-index: 10000; /* Added z-index for left-tooltip */
+}
+
+/* .tooltip-container .left-tooltip::after {
+  left: 15px;
+} */
+
+/* .tooltip-container .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1f2937 transparent transparent transparent;
+} */
+
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ensure no parent elements are clipping the tooltip */
+.tooltip-container {
+  overflow: visible !important;
+}
+
+
+.below-tooltip-container {
+  position: relative;
+  display: inline-flex;
+  z-index: 40;
+}
+
+.below-tooltip-container .tooltip {
+  visibility: hidden;
+  width: 260px;
+  background-color: #1f2937;
+  color: white;
+  text-align: left;
+  border-radius: 4px;
+  padding: 12px;
+  position: absolute;
+  z-index: 10000;
+  top: 100%; /* Position below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.below-tooltip-container .left-tooltip {
+  left: 0;
+  transform: none;
+  margin-left: -10px;
+  z-index: 10000;
+}
+
+/* .below-tooltip-container .tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%; 
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #1f2937 transparent;
+  z-index: 10001;
+} */
+
+.below-tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ensure no parent elements are clipping the tooltip */
+.below-tooltip-container {
+  overflow: visible !important;
+}
+
+.tooltip-button {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font: normal normal normal 12px/14px Roboto;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.tooltip-container:hover .tooltip-button {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-bullets {
+  list-style: none;         /* remove default bullets */
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.custom-bullets li {
+  position: relative;
+  padding-left: 1.2em;       /* room for bullet */
+  text-indent: -0.6em;       /* hanging indent */
+}
+
+.custom-bullets li::before {
+  content: "•";             /* custom bullet */
+  position: absolute;
+  left: 0;
+}
+
+
+ /* Vertical scrollbar */
+
+    /* Vertical scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f8fafc;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #A78BFA; /* Lighter purple */
+        border: 2px solid #f8fafc;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #8B5CF6; /* Slightly darker on hover */
+      }
+      
+      /* Horizontal scrollbar specific */
+      ::-webkit-scrollbar:horizontal {
+        height: 8px;
+      }
+      ::-webkit-scrollbar-thumb:horizontal {
+        background: #A78BFA;
+        border: 2px solid #f8fafc;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:horizontal:hover {
+        background: #8B5CF6;
+      }
+
+
+/* Custom scrollbar for files select *//* Custom scrollbar for files select *//* Custom scrollbar for files select */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* no background */
+  border-radius: 4px;
+  margin: 4px 4px 4px 6px; /* <— pushes scrollbar inward */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+  border: 1px solid #EEEEEE;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #444; 
+}
+
+/* Optional: remove default arrows completely */
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* If you want custom up/down arrows, keep the below styles */
+.custom-scrollbar::-webkit-scrollbar-button:single-button {
+  background-color: #EEEEEE;
+  border-left: 1px solid #D3D1D1;
+  height: 12px;
+}
+
+/* Up arrow */
+.custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' fill='%23000' viewBox='0 0 6 6'%3E%3Cpath d='M3 1.5L1 3.5h4L3 1.5z'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Down arrow */
+.custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6' fill='%23000' viewBox='0 0 6 6'%3E%3Cpath d='M1 2.5l2 2 2-2H1z'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* SweetAlert2 Button Styling */
+.swal-confirm-button,
+.swal-cancel-button {
+  background-color: #111111 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 24px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  margin: 0 8px !important;
+}
+
+.swal-cancel-button {
+  background-color: #f3f4f6 !important;
+  color: #111111 !important;
+  border: 1px solid #d1d5db !important;
+}

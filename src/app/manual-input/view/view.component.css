@@ -1,0 +1,157 @@
+:host {
+  display: block;
+  /* Assuming a navbar height of 64px. Adjust if yours is different. */
+  height: calc(100vh - 64px); 
+}
+
+.page-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* --- Sidebar Styling --- */
+.sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  background-color: #f8fafc; /* gray-50 */
+  border-right: 1px solid #e2e8f0; /* gray-200 */
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b; /* gray-800 */
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.tree-level {
+  margin-bottom: 1.5rem;
+}
+
+.tree-level-title {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  color: #64748b; /* gray-500 */
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.tree-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem; /* text-sm */
+  color: #334155; /* gray-700 */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tree-item-placeholder {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #94a3b8; /* gray-400 */
+  font-style: italic;
+}
+
+.tree-item:hover {
+  background-color: #eef2ff; /* indigo-100 */
+}
+
+.tree-item.active {
+  background-color: #4f46e5; /* indigo-600 */
+  color: white;
+  font-weight: 500;
+}
+
+.tree-item.folder::before {
+  content: '📁';
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+.tree-item.file::before {
+  content: '📄';
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* --- Viewer Pane Styling --- */
+.viewer-pane {
+  flex-grow: 1;
+  padding: 1.5rem;
+  background-color: #f1f5f9; /* gray-100 */
+}
+
+.viewer-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-message {
+  text-align: center;
+  font-size: 1rem;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.state-icon {
+  width: 48px;
+  height: 48px;
+  color: #94a3b8; /* gray-400 */
+}
+
+.error-icon {
+  color: #ef4444; /* red-500 */
+}
+
+.state-message.error {
+  color: #b91c1c; /* red-700 */
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid #4f46e5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

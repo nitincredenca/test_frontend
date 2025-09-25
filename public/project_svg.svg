@@ -1,0 +1,13 @@
+<svg id="outline-assignment-24px" xmlns="http://www.w3.org/2000/svg" width="29.849" height="29.849" viewBox="0 0 29.849 29.849">
+  <g id="Bounding_Boxes">
+    <path id="Path_2274" data-name="Path 2274" d="M0,0H29.849V29.849H0Z" fill="none"/>
+  </g>
+  <g id="Outline" transform="translate(3.731 1.244)">
+    <g id="Group_33" data-name="Group 33">
+      <rect id="Rectangle_14" data-name="Rectangle 14" width="8" height="2" transform="translate(5.37 17.756)" fill="#7841e8"/>
+      <rect id="Rectangle_15" data-name="Rectangle 15" width="12" height="2" transform="translate(5.37 12.756)" fill="#7841e8"/>
+      <rect id="Rectangle_16" data-name="Rectangle 16" width="12" height="2" transform="translate(5.37 7.756)" fill="#7841e8"/>
+      <path id="Path_2275" data-name="Path 2275" d="M22.9,3.487H17.7a3.716,3.716,0,0,0-7.014,0h-5.2a2.179,2.179,0,0,0-.5.05A2.513,2.513,0,0,0,3.2,5.017a2.4,2.4,0,0,0-.2.958V23.386a2.552,2.552,0,0,0,.2.97,2.636,2.636,0,0,0,.535.8,2.5,2.5,0,0,0,1.256.684,3.227,3.227,0,0,0,.5.037H22.9a2.5,2.5,0,0,0,2.487-2.487V5.975A2.5,2.5,0,0,0,22.9,3.487Zm-8.706-.311a.933.933,0,1,1-.933.933A.94.94,0,0,1,14.193,3.176ZM22.9,23.386H5.487V5.975H22.9Z" transform="translate(-3 -1)" fill="#7841e8"/>
+    </g>
+  </g>
+</svg>

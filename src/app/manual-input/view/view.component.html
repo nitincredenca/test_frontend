@@ -1,0 +1,220 @@
+<!-- <div class="page-container">
+
+  <aside class="sidebar">
+    <h3 class="sidebar-title">Content Explorer</h3>
+
+    <div class="tree-level">
+      <h4 class="tree-level-title">Clients</h4>
+      <ul class="tree-list">
+        <li *ngIf="clients.length === 0" class="tree-item-placeholder">Loading clients...</li>
+        <li *ngFor="let client of clients" (click)="onClientSelect(client)" [class.active]="client === selectedClient"
+          class="tree-item folder">
+          {{ client }}
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedClient" class="tree-level">
+      <h4 class="tree-level-title">Projects for {{ selectedClient }}</h4>
+      <ul class="tree-list">
+        <li *ngIf="projects.length === 0" class="tree-item-placeholder">No projects found.</li>
+        <li *ngFor="let project of projects" (click)="onProjectSelect(project)"
+          [class.active]="project === selectedProject" class="tree-item folder">
+          {{ project }}
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedProject" class="tree-level">
+      <h4 class="tree-level-title">Modules for {{ selectedProject }}</h4>
+      <ul class="tree-list">
+        <li *ngIf="modules.length === 0" class="tree-item-placeholder">No modules found.</li>
+        <li *ngFor="let module of modules" (click)="onModuleSelect(module)" [class.active]="module === selectedModule"
+          class="tree-item folder">
+          {{ module }}
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedModule" class="tree-level">
+      <h4 class="tree-level-title">Files in {{ selectedModule }}</h4>
+
+      <ul *ngIf="getSubfolders().length === 0" class="tree-list">
+        <li class="tree-item-placeholder">No files found.</li>
+      </ul>
+
+      <div *ngFor="let subfolder of getSubfolders()">
+
+        <h5 class="subfolder-title">{{ subfolder }}</h5>
+
+        <ul class="tree-list subfolder-list">
+          <li *ngFor="let fileName of files[subfolder]" (click)="onFileSelect(fileName, subfolder)"
+            [class.active]="selectedFile && selectedFile.name === fileName && selectedFile.subfolder === subfolder"
+            class="tree-item file">
+            {{ fileName }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <main class="viewer-pane">
+    <div class="viewer-content">
+      <div *ngIf="!isLoadingFile && !fileUrl && !errorMessage && !isProcessing" class="state-message empty">
+        <svg xmlns="http://www.w3.org/2000/svg" class="state-icon" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+        </svg>
+        <p>Select a file from the Content Explorer to view it here.</p>
+      </div>
+
+      <div *ngIf="isLoadingFile" class="state-message">
+        <div class="spinner"></div>
+        <p>Loading {{ selectedFile?.name }}...</p>
+      </div>
+
+      <div *ngIf="isProcessing" class="state-message">
+        <div class="spinner"></div>
+        <p>Preparing {{ selectedFile?.name }} for viewing...</p>
+      </div>
+
+      <div *ngIf="errorMessage" class="state-message error">
+        <svg xmlns="http://www.w3.org/2000/svg" class="state-icon error-icon" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p>{{ errorMessage }}</p>
+      </div>
+
+      <iframe *ngIf="fileUrl" [src]="fileUrl" title="File Viewer"></iframe>
+    </div>
+  </main>
+</div> -->
+
+
+<div class="min-h-screen bg-gray-50 flex flex-col">
+  <!-- Full Width Navbar (same as outline component) -->
+  <app-navbar></app-navbar>
+
+  <div class="flex flex-1 overflow-hidden">
+    <!-- Sidebar with proper spacing -->
+    <div
+      class="w-72 bg-white border-r border-gray-200 shadow-sm flex-shrink-0 mt-2 ml-2 mb-2 rounded-lg overflow-y-auto">
+      <div class="p-4">
+        <h3 class="text-sm font-medium text-gray-700 mb-4">Content Explorer</h3>
+
+        <!-- Clients Section -->
+        <div class="mb-4">
+          <h4 class="text-xs font-medium text-gray-600 mb-2">Clients</h4>
+          <div class="space-y-1">
+            <div *ngIf="clients.length === 0" class="text-xs text-gray-500 italic pl-2">Loading clients...</div>
+            <div *ngFor="let client of clients" (click)="onClientSelect(client)"
+              [class]="'text-xs p-2 rounded-md cursor-pointer transition-colors ' + 
+                          (client === selectedClient ? 'bg-blue-100 text-blue-800' : 'hover:bg-gray-100 text-gray-700')">
+              📁 {{ client }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div *ngIf="selectedClient" class="mb-4">
+          <h4 class="text-xs font-medium text-gray-600 mb-2">Projects for {{ selectedClient }}</h4>
+          <div class="space-y-1">
+            <div *ngIf="projects.length === 0" class="text-xs text-gray-500 italic pl-2">No projects found.</div>
+            <div *ngFor="let project of projects" (click)="onProjectSelect(project)"
+              [class]="'text-xs p-2 rounded-md cursor-pointer transition-colors ' + 
+                          (project === selectedProject ? 'bg-blue-100 text-blue-800' : 'hover:bg-gray-100 text-gray-700')">
+              📁 {{ project }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Modules Section -->
+        <div *ngIf="selectedProject" class="mb-4">
+          <h4 class="text-xs font-medium text-gray-600 mb-2">Modules for {{ selectedProject }}</h4>
+          <div class="space-y-1">
+            <div *ngIf="modules.length === 0" class="text-xs text-gray-500 italic pl-2">No modules found.</div>
+            <div *ngFor="let module of modules" (click)="onModuleSelect(module)"
+              [class]="'text-xs p-2 rounded-md cursor-pointer transition-colors ' + 
+                          (module === selectedModule ? 'bg-blue-100 text-blue-800' : 'hover:bg-gray-100 text-gray-700')">
+              📁 {{ module }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Files Section -->
+        <div *ngIf="selectedModule">
+          <h4 class="text-xs font-medium text-gray-600 mb-2">Files in {{ selectedModule }}</h4>
+
+          <div *ngIf="getSubfolders().length === 0" class="text-xs text-gray-500 italic pl-2">
+            No files found.
+          </div>
+
+          <div *ngFor="let subfolder of getSubfolders()" class="mb-3">
+            <h5 class="text-xs font-medium text-gray-500 mb-1 pl-2">{{ subfolder }}</h5>
+            <div class="space-y-1">
+              <div *ngFor="let fileName of files[subfolder]" (click)="onFileSelect(fileName, subfolder)" [class]="'text-xs p-2 rounded-md cursor-pointer transition-colors ' + 
+                            (selectedFile && selectedFile.name === fileName && selectedFile.subfolder === subfolder ? 
+                             'bg-blue-100 text-blue-800' : 'hover:bg-gray-100 text-gray-700')">
+                📄 {{ fileName }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <div class="flex-1 overflow-auto p-4">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 h-full flex items-center justify-center">
+          <!-- Empty State -->
+          <div *ngIf="!isLoadingFile && !fileUrl && !errorMessage && !isProcessing"
+            class="text-center p-8 flex flex-col items-center">
+            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+            </div>
+            <h3 class="text-sm font-medium text-gray-700 mb-1">No file selected</h3>
+            <p class="text-xs text-gray-500">Select a file from the Content Explorer to view it here.</p>
+          </div>
+
+          <!-- Loading State -->
+          <div *ngIf="isLoadingFile" class="text-center p-8 flex flex-col items-center">
+            <div class="w-16 h-16 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin mb-4"></div>
+            <p class="text-xs text-gray-600">Loading {{ selectedFile?.name }}...</p>
+          </div>
+
+          <!-- Processing State -->
+          <div *ngIf="isProcessing" class="text-center p-8 flex flex-col items-center">
+            <div class="w-16 h-16 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin mb-4"></div>
+            <p class="text-xs text-gray-600">Preparing {{ selectedFile?.name }} for viewing...</p>
+          </div>
+
+          <!-- Error State -->
+          <div *ngIf="errorMessage" class="text-center p-8 flex flex-col items-center">
+            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center text-red-500 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-sm font-medium text-gray-700 mb-1">Error loading file</h3>
+            <p class="text-xs text-red-500 max-w-md">{{ errorMessage }}</p>
+          </div>
+
+          <!-- File Viewer -->
+          <div *ngIf="fileUrl && !isLoadingFile && !isProcessing" class="w-full h-full">
+            <iframe [src]="fileUrl" class="w-full h-full rounded-lg" title="File Viewer" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

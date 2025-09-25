@@ -1,0 +1,99 @@
+<div class="min-h-screen font-roboto relative">
+  <app-navbar></app-navbar>
+
+  <div class="flex flex-col items-center pt-4 md:pt-8 lg:pt-[3.5rem] px-4">
+    <!-- Header Text -->
+    <h1
+      class="text-center max-w-[21.5rem] w-full font-semibold text-2xl sm:text-3xl md:text-[2.125rem] md:leading-[2.625rem] text-[#111111] mb-6 md:mb-12">
+      Welcome to StoryBot!
+    </h1>
+
+    <!-- Main Box -->
+    <div
+      class="w-full max-w-[35rem] min-h-[18.75rem] md:h-[22.5rem] bg-white rounded-lg border border-[#D5D1D1] shadow-[0px_0px_1rem_#5D7EFB4D]">
+
+      <!-- Form container -->
+      <div class="p-6 md:p-10 h-full flex flex-col justify-center">
+        <div class="space-y-6 md:space-y-8">
+          <!-- Client Selection -->
+          <div class="relative">
+            <label class="block text-[#111111] font-semibold text-sm md:text-[0.875rem] md:leading-[1rem] mb-2">
+              Select Client
+            </label>
+
+            <!-- Client Dropdown -->
+            <div class="relative">
+              <input type="text" [(ngModel)]="clientSearchQuery" (input)="filterClients()"
+                (focus)="showClientDropdown = true" (blur)="onClientBlur()" placeholder="Select client" class="w-full h-10 md:h-[3rem] pl-3 pr-8 rounded-md border border-[#D3D1D1] bg-[#EEEEEE] 
+                       text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#588AFF] 
+                       focus:border-[#588AFF] transition-all duration-200 font-semibold" />
+              <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                <svg class="h-4 w-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Client Dropdown List -->
+            <div *ngIf="showClientDropdown && filteredClients.length"
+              class="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-hidden">
+              <ul class="max-h-48 overflow-y-auto">
+                <li *ngFor="let client of filteredClients" (mousedown)="selectClient(client)"
+                  class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-[#005a84]/10">
+                  <span class="font-normal block truncate">{{ client }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Project Selection -->
+          <div class="relative">
+            <label class="block text-[#111111] font-semibold text-sm md:text-[0.875rem] md:leading-[1rem] mb-2">
+              Select Project
+            </label>
+
+            <!-- Project Dropdown -->
+            <div class="relative">
+              <input type="text" [(ngModel)]="projectSearchQuery" (input)="filterProjects()"
+                (focus)="showProjectDropdown = true" (blur)="onProjectBlur()" placeholder="Select project"
+                [disabled]="!selectedClient" class="w-full h-10 md:h-[3rem] pl-3 pr-8 rounded-md border border-[#D3D1D1] bg-[#EEEEEE] 
+                       text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#588AFF] 
+                       focus:border-[#588AFF] transition-all duration-200 disabled:opacity-50 
+                       disabled:cursor-not-allowed font-semibold" />
+              <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                <svg class="h-4 w-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Project Dropdown List -->
+            <div *ngIf="showProjectDropdown && filteredProjects.length && selectedClient"
+              class="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-hidden">
+              <ul class="max-h-48 overflow-y-auto">
+                <li *ngFor="let project of filteredProjects" (mousedown)="selectProject(project)"
+                  class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-[#005a84]/10">
+                  <span class="font-normal block truncate">{{ project }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Next Button -->
+          <div class="pt-4 md:pt-6">
+
+            <button (click)="navigateToManualInput()" [disabled]="!selectedClient || !selectedProject" class="w-full h-[2.125rem]
+         rounded-md text-white font-bold text-sm md:text-[0.875rem] md:leading-[1rem]
+         shadow-md transition-all duration-200 focus:outline-none focus:ring-2
+         focus:ring-offset-2 focus:ring-[#8E0ED8]/40 active:translate-y-px
+         disabled:opacity-50 disabled:cursor-not-allowed
+         bg-gradient-to-r from-[#588AFF] to-[#8E0ED8]">
+              Next
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
