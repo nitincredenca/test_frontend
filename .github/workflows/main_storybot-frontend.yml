@@ -26,9 +26,9 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --configuration production
 
-      - name: Prepare artifact (zip dist/browser)
+      - name: Prepare artifact (zip dist output)
         run: |
-          cd dist
+          cd dist/storybot
           zip -r storybot.zip browser
         shell: bash
 
@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: angular-dist
-          path: dist/storybot.zip
+          path: dist/storybot/storybot.zip
 
   deploy:
     runs-on: ubuntu-latest
